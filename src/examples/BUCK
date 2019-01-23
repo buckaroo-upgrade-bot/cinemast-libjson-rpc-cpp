@@ -1,0 +1,9 @@
+cxx_binary(
+  name = 'simpleserver',
+  srcs = [
+    'simpleserver.cpp',
+  ],
+  deps = [
+    '//src/jsonrpccpp:jsonrpccpp',
+  ],
+)

@@ -1,0 +1,13 @@
+targets = [ "//src/jsonrpccpp:jsonrpccpp" ]
+
+[[dependency]]
+package = "github.com/buckaroo-pm/metaswitch-libmicrohttpd"
+version = "branch=master"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/open-source-parsers-jsoncpp"
+version = "branch=master"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/redis-hiredis"
+version = "branch=master"

@@ -1,0 +1,43 @@
+load('//:buckaroo_macros.bzl', 'buckaroo_deps')
+load('//:subdir_glob.bzl', 'subdir_glob')
+
+# sed -i 's/old-text/new-text/g' input.txt.
+genrule(
+  name = 'jsonparser-h',
+  out = 'jsonparser.h',
+  srcs = [
+    'common/jsonparser.h.in',
+  ],
+  cmd = 'cat $SRCS | sed -e \'s/@JSONCPP_INCLUDE_PREFIX@/json/g\' > $OUT',
+)
+
+windows_srcs = glob([
+  '**/windows*.cpp'
+])
+
+platform_srcs = windows_srcs
+
+cxx_library(
+  name = 'jsonrpccpp',
+  header_namespace = '',
+  exported_headers = dict(
+    subdir_glob([
+      ('', '**/*.h'),
+    ], prefix = 'jsonrpccpp').items() + [
+      ('jsonrpccpp/common/jsonparser.h', ':jsonparser-h'),
+    ]
+  ),
+  headers = {
+    'jsonparser.h': ':jsonparser-h',
+  },
+  srcs = glob([
+    '**/*.cpp',
+  ], exclude = platform_srcs),
+  platform_srcs = [
+    ('windows.*', windows_srcs),
+  ],
+  deps = buckaroo_deps(),
+  visibility = [
+    'PUBLIC',
+  ],
+)

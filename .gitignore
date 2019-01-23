@@ -52,3 +52,10 @@ lib
 gen
 win32-deps
 **/*.dir/*
+
+.buckd
+buck-out
+.buckconfig.local
+.buckconfig.d
+buckaroo
+buckaroo_macros.bzl

@@ -1,33 +1,32 @@
 language: cpp
+sudo: true
 dist: trusty
-services:
-  - docker
-before_install:
-  - |
-    if [[ "$TRAVIS_OS_NAME" == "osx" ]]
-    then
-     brew update
-     brew install jsoncpp argtable curl hiredis redis
-     brew install libmicrohttpd --with-ssl
-    fi
 
-matrix:
-  include:
-    - env: OS=fedora
-      os: linux
-    - env: OS=arch
-      os: linux
-    - env: OS=debian9
-      os: linux
-    - env: OS=debian10
-      os: linux
-    - env: OS=ubuntu1604
-      os: linux
-    - env: OS=ubuntu1804
-      os: linux
-    - env: OS=osx
-      os: osx
-      compiler: clang
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+      - gcc-6
+  homebrew:
+    taps:
+      - facebook/fb
+    packages:
+      - buck
+
+os:
+  - linux
+  - osx
+
+env:
+  - BUCKAROO_VERSION=buckaroo-redux-alpha-12
+
+osx_image: xcode9.3
+
+before_install:
+  - ./travis/before-install-$TRAVIS_OS_NAME.sh
 
 script:
-    - cd docker && make ${OS};
+  - ./buckaroo-client install
+  - buck build -c ui.superconsole=DISABLED //src/jsonrpccpp:jsonrpccpp

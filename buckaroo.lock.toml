@@ -1,0 +1,37 @@
+manifest = "72e824f80508c7fbf0700c17187e2b7dbd834642e0370697bb6ba460fba5db9f"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/metaswitch-libmicrohttpd"
+target = "//:microhttpd"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/open-source-parsers-jsoncpp"
+target = "//:jsoncpp"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/redis-hiredis"
+target = "//:hiredis"
+
+[lock."github.com/buckaroo-pm/host-core-foundation"]
+versions = [ "branch=master" ]
+revision = "fd7081ffe1244afb86c41c2d41d3603f851feae8"
+
+[lock."github.com/buckaroo-pm/host-pthread"]
+versions = [ "branch=master" ]
+revision = "a62519aa69c8e3243d6065fbf4c1d2de072f86f6"
+
+[lock."github.com/buckaroo-pm/libuv"]
+versions = [ "branch=v1.x" ]
+revision = "fc3570b7a90c0daa9a091f982a75d6b54f83cf19"
+
+[lock."github.com/buckaroo-pm/metaswitch-libmicrohttpd"]
+versions = [ "branch=master" ]
+revision = "b24a96eaf3783a798a670ce0e9daf624c0e60ab8"
+
+[lock."github.com/buckaroo-pm/open-source-parsers-jsoncpp"]
+versions = [ "branch=master" ]
+revision = "518b3cfb2fab26c224732bba92a97b7a7c304cf2"
+
+[lock."github.com/buckaroo-pm/redis-hiredis"]
+versions = [ "branch=master" ]
+revision = "839cfafd7ff8e450d2eb4a67a742b8b442785997"
