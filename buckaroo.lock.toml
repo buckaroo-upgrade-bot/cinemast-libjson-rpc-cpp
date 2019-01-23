@@ -1,4 +1,4 @@
-manifest = "72e824f80508c7fbf0700c17187e2b7dbd834642e0370697bb6ba460fba5db9f"
+manifest = "31d8516d3a8bc706d92e38122edf3799720849bff4aba93237efaaa1a8c174af"
 
 [[dependency]]
 package = "github.com/buckaroo-pm/metaswitch-libmicrohttpd"
